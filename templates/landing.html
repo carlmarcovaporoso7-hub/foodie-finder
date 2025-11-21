@@ -1,0 +1,1200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Finder - Discover Great Food in Naval Proper</title>
+    <link rel="icon" href="{% static 'img/LOGO.png' %}" sizes="32x32">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div id="preloader">
+        <div class="loader-card">
+            <img src="{% static 'img/LOGO.png' %}" alt="Foodie Finder" class="loader-logo">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="landing-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="{% static 'img/LOGO.png' %}" alt="Foodie Finder" class="nav-logo">
+                <span class="nav-title">Foodie Finder</span>
+            </div>
+            <div class="nav-actions">
+                <a href="{% url 'about' %}" class="about-btn">
+                    <span class="about-btn-text">About</span>
+                    <div class="about-btn-bg"></div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-particles"></div>
+            <div class="hero-gradient-orb orb-1"></div>
+            <div class="hero-gradient-orb orb-2"></div>
+            <div class="hero-gradient-orb orb-3"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <div class="badge-glow"></div>
+                    <!-- <i class="fas fa-crown"></i> -->
+                    <!-- <span>Naval Proper's #1 Food Discovery Platform</span> -->
+                    <!-- <div class="badge-sparkle">✨</div> -->
+                </div>
+                <h1 class="hero-title">
+                    Discover Amazing <span class="gradient-text">Food</span><br>
+                    <span class="hero-subtitle">in Naval Proper</span>
+                </h1>
+                <p class="hero-description">
+                    Your ultimate digital platform for finding the best restaurants, meals, snacks, and drinks. 
+                    Making food discovery simple, organized, and accessible for everyone in our community.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{% url 'register' %}" class="btn hero-primary">
+                        <div class="btn-glow"></div>
+                        <i class="fas fa-rocket"></i>
+                        <span>Get Started Free</span>
+                        <div class="btn-shine"></div>
+                    </a>
+                    <a href="{% url 'login' %}" class="btn hero-secondary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Sign In</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <!-- <div class="stat-icon"><i class="fas fa-store"></i></div>
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Restaurants</div> -->
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon"><i class="fas fa-utensils"></i></div>
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Dishes</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Happy Users</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-logo-container">
+                    <div class="logo-rings">
+                        <div class="ring ring-1"></div>
+                        <div class="ring ring-2"></div>
+                        <div class="ring ring-3"></div>
+                    </div>
+                    <img src="{% static 'img/LOGO.png' %}" alt="Foodie Finder" class="hero-logo">
+                    <div class="logo-glow"></div>
+                    <div class="logo-sparkles">
+                        <div class="sparkle sparkle-1">✨</div>
+                        <div class="sparkle sparkle-2">⭐</div>
+                        <div class="sparkle sparkle-3">💫</div>
+                        <div class="sparkle sparkle-4">✨</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <!-- <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Foodie Finder?</h2>
+                <p class="section-subtitle">Discover what makes us the best food discovery platform in Naval Proper</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon search">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Smart Search Bar</h3>
+                    <p>Advanced search with live suggestions, A-Z food recommendations, and intelligent filtering to find exactly what you're craving.</p>
+                    <div class="feature-highlight">Live Suggestions</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon filter">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Category Filters</h3>
+                    <p>Browse by cuisine type, price range, meal categories, and restaurant features. Filter by budget, location, and dining preferences.</p>
+                    <div class="feature-highlight">Smart Filtering</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon recommend">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <h3>Personalized Recommendations</h3>
+                    <p>Get curated suggestions based on popular dishes, featured restaurants, and trending food options in your area.</p>
+                    <div class="feature-highlight">AI Powered</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon map">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location-Based Discovery</h3>
+                    <p>Find restaurants near you with interactive maps, real-time status, and detailed location information.</p>
+                    <div class="feature-highlight">GPS Enabled</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon menu">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Complete Menu System</h3>
+                    <p>Browse full menus with prices, serving sizes, and detailed dish descriptions. See what's available before you visit.</p>
+                    <div class="feature-highlight">Full Menus</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon mobile">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile-Friendly Design</h3>
+                    <p>Fully responsive design that works perfectly on all devices. Access Foodie Finder anywhere, anytime.</p>
+                    <div class="feature-highlight">Responsive</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    How It Works Section
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How Foodie Finder Works</h2>
+                <p class="section-subtitle">Simple steps to discover your next favorite meal</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Sign Up</h3>
+                    <p>Create your free account in seconds and join our community of food lovers in Naval Proper.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Search & Discover</h3>
+                    <p>Use our smart search and filters to find restaurants, dishes, and cuisines that match your cravings.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Explore & Enjoy</h3>
+                    <p>Browse detailed menus, check prices, and discover new dining experiences in your area.</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Testimonials Section -->
+    <!-- <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Users Say</h2>
+                <p class="section-subtitle">Real experiences from food lovers in Naval Proper</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Foodie Finder completely changed how I discover new restaurants. The search is so intuitive and I've found amazing hidden gems!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👩💼</div>
+                        <div class="author-info">
+                            <div class="author-name">Maria Santos</div>
+                            <div class="author-title">Food Enthusiast</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"As a restaurant owner, this platform has helped us reach so many new customers. The interface is professional and easy to use."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨🍳</div>
+                        <div class="author-info">
+                            <div class="author-name">Chef Rodriguez</div>
+                            <div class="author-title">Restaurant Owner</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The mobile app is fantastic! I can find great food options wherever I am in Naval Proper. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👨💻</div>
+                        <div class="author-info">
+                            <div class="author-name">John Dela Cruz</div>
+                            <div class="author-title">Tech Professional</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- CTA Section -->
+    <!-- <section class="cta-section">
+        <div class="cta-bg">
+            <div class="cta-particles"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2>Ready to Discover Great Food?</h2>
+                <p>Join thousands of food lovers who trust Foodie Finder to discover the best dining experiences in Naval Proper.</p>
+                <div class="cta-buttons">
+                    <a href="{% url 'register' %}" class="btn cta-primary">
+                        <div class="btn-glow"></div>
+                        <i class="fas fa-rocket"></i>
+                        <span>Start Exploring Now</span>
+                        <div class="btn-shine"></div>
+                    </a>
+                    <a href="{% url 'main' %}" class="btn cta-secondary">
+                        <i class="fas fa-eye"></i>
+                        <span>Browse Restaurants</span>
+                    </a>
+                </div>
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>100% Free to Use</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>No Hidden Fees</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Instant Access</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- <footer class="landing-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="{% static 'img/LOGO.png' %}" alt="Foodie Finder" class="footer-logo">
+                    <h3>Foodie Finder</h3>
+                    <p>Connecting food lovers with the best dining experiences in Naval Proper.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Platform</h4>
+                        <ul>
+                            <li><a href="{% url 'main' %}">Browse Restaurants</a></li>
+                            <li><a href="{% url 'register' %}">Sign Up</a></li>
+                            <li><a href="{% url 'login' %}">Sign In</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>About</h4>
+                        <ul>
+                            <li><a href="{% url 'about' %}">About Us</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="footer-bottom">
+                <p>&copy; 2024 Foodie Finder. Made with ❤️ for Naval Proper's food community.</p>
+            </div>
+        </div>
+    </footer> -->
+
+    <script> -->
+    // Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => preloader.style.display = 'none', 300);
+        }, 1000);
+    });
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Add scroll effect to navigation
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.landing-nav');
+        if (window.scrollY > 100) {
+            nav.style.background = 'rgba(255,255,255,0.98)';
+            nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.15)';
+        } else {
+            nav.style.background = 'rgba(255,255,255,0.95)';
+            nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.1)';
+        }
+    });
+    </script>
+
+    <div id="toasts">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="toast {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        .landing-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(245, 71, 73, 0.3);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .about-btn {
+            position: relative;
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .about-btn-text {
+            position: relative;
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .about-btn-bg {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2) 0%, rgba(238, 90, 36, 0.2) 100%);
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1;
+        }
+
+        .about-btn:hover .about-btn-bg {
+            left: 0;
+        }
+
+        .about-btn:hover .about-btn-text {
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .about-btn:hover {
+            border-color: rgba(255, 107, 107, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(15, 12, 41, 0.95) 0%, rgba(48, 43, 99, 0.95) 50%, rgba(36, 36, 62, 0.95) 100%);
+            z-index: -1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(238, 90, 36, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FFB703 0%, #FB8500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-primary {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.5);
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+            padding: 1.2rem 2.5rem;
+        }
+
+        .hero-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(238, 90, 36, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            font-size: 1.1rem;
+            padding: 1.2rem 2.5rem;
+        }
+
+        .hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-4px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-glow {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24, #ff9ff3, #54a0ff);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: pulse 4s ease-in-out infinite;
+            z-index: -1;
+            filter: blur(20px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(15, 12, 41, 0.05) 0%, transparent 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon.search { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .feature-icon.filter { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .feature-icon.recommend { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .feature-icon.map { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .feature-icon.menu { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .feature-icon.mobile { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .feature-highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary, #F54749) 0%, #e63946 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 8rem 0;
+            background: white;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #ff6b6b;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .step-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 8rem 0;
+            background: #f8f9fa;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+            color: #FFB703;
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            font-size: 2rem;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .author-title {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .cta-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(238, 90, 36, 0.5);
+            border: 2px solid transparent;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(238, 90, 36, 0.7);
+        }
+
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .cta-features {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .cta-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .cta-feature i {
+            color: #FFB703;
+        }
+
+        /* Footer */
+        .landing-footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+
+        .footer-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Toast Messages */
+        #toasts {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            z-index: 10000;
+        }
+
+        .toast {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+            border-left: 4px solid #ff6b6b;
+            animation: slideIn 0.3s ease;
+        }
+
+        .toast.success {
+            border-left-color: #28a745;
+        }
+
+        .toast.error {
+            border-left-color: #dc3545;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-logo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nav-actions {
+                gap: 0.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-features {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const pl = document.getElementById('preloader');
+            if (pl) {
+                pl.style.opacity = '0';
+                setTimeout(() => pl.remove(), 300);
+            }
+            // Toasts auto dismiss
+            document.querySelectorAll('#toasts .toast').forEach(t => 
+                setTimeout(() => t.remove(), 3500)
+            );
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Main{% endblock %}
+{% block top_action %}
+<button class="btn ghost" onclick="showLogoutModal()">Logout</button>
+{% endblock %}
+{% block content %}
+<section class="hero">
+    <h1>Foodie Finder</h1>
+    <p>Welcome, {{ request.user.first_name|default:request.user.username }}! Discover where to satisfy your cravings around Naval Proper.</p>
+    <form class="search" action="{% url 'search-results' %}" method="get" autocomplete="off">
+        <input id="searchBox" type="text" name="q" placeholder="Search your craving today!!" required>
+        <button class="btn primary" type="submit">Search</button>
+        <ul id="suggestions" class="suggestions"></ul>
+    </form>
+</section>
+
+<section class="quotes">
+    <div class="quote">🍔 Good food is all the sweeter when shared with good friends.</div>
+    <div class="quote">🍕 Easy to find your favorite food.</div>
+    <div class="quote">🍜 Cravings don’t wait—neither should you.</div>
+</section>
+
+<section>
+    <h2>Featured in Naval Proper</h2>
+    <div style="margin:16px 0 24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <strong style="font-size:16px;color:var(--text);margin-right:8px">Filter:</strong>
+        <button class="btn primary" data-filter="all" style="background:linear-gradient(135deg,var(--primary),var(--primary-600));box-shadow:0 8px 18px rgba(245,71,73,.35);">All</button>
+        {% for cat in categories %}
+            <button class="btn" data-filter="{{ cat }}" style="background:linear-gradient(135deg,#fff7ed,#ffe5cc);color:#c2410c;box-shadow:0 4px 12px rgba(0,0,0,.08);border:2px solid transparent">{% if cat == 'Fast Food' %}🍔{% elif cat == 'Seafood' %}🍤{% elif cat == 'Dessert' %}🍰{% elif cat == 'Asian' %}🍜{% elif cat == 'Diner' %}🥪{% else %}🍽️{% endif %} {{ cat }}</button>
+        {% endfor %}
+    </div>
+    <div class="grid cards">
+        {% for r in featured %}
+        <div class="card" data-category="{{ r.category }}" style="border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
+            <a href="{% url 'restaurant-detail' r.pk %}" style="text-decoration: none; color: inherit;">
+                <div class="thumb" style="background-image:url('{% if r.thumbnail %}{{ r.thumbnail.url }}{% else %}{% static 'img/placeholder.jpg' %}{% endif %}'); height: 200px;"></div>
+                <div class="card-body" style="padding: 20px;">
+                    <div class="card-title" style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">{{ r.name }}</div>
+                    <div class="muted" style="margin-bottom: 15px;"><i class="fas fa-map-marker-alt"></i> {{ r.location }}</div>
+                    <div style="margin-bottom: 15px;">
+                        {% if r.is_open_now %}
+                            <span class="badge open">Open Now</span>
+                        {% else %}
+                            <span class="badge closed">Closed</span>
+                        {% endif %}
+                        <span class="badge cat">{% if r.category == 'Fast Food' %}🍔{% elif r.category == 'Seafood' %}🍤{% elif r.category == 'Dessert' %}🍰{% elif r.category == 'Asian' %}🍜{% elif r.category == 'Diner' %}🥪{% else %}🍽️{% endif %} {{ r.category }}</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Restaurant Menu Preview -->
+            <div style="background: #f8f9fa; padding: 15px; border-top: 1px solid #eee;">
+                <h5 style="color: #F54749; margin-bottom: 12px; font-size: 16px;"><i class="fas fa-utensils"></i> Menu Highlights</h5>
+                {% if r.dishes.all %}
+                    <div style="display: grid; gap: 8px;">
+                        {% for dish in r.dishes.all|slice:":4" %}
+                        <div style="display: flex; justify-content: between; align-items: center; background: white; padding: 10px; border-radius: 8px; border-left: 3px solid #F54749;">
+                            <div style="flex: 1;">
+                                <span style="font-weight: 600; color: #333;">{{ dish.name }}</span>
+                                {% if dish.dish_category %}
+                                <span style="background: #FFB703; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-left: 8px;">{{ dish.dish_category }}</span>
+                                {% endif %}
+                            </div>
+                            <span style="color: #16a34a; font-weight: 600; font-size: 14px;">₱{{ dish.price }}</span>
+                        </div>
+                        {% endfor %}
+                        {% if r.dishes.count > 4 %}
+                        <div style="text-align: center; margin-top: 8px;">
+                            <a href="{% url 'restaurant-detail' r.pk %}" style="color: #F54749; font-size: 14px; text-decoration: none; font-weight: 600;">
+                                +{{ r.dishes.count|add:"-4" }} more dishes <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <p style="color: #999; font-style: italic; margin: 0;">Menu coming soon...</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if featured|length == 0 %}
+    <p class="muted">No featured restaurants yet.</p>
+    {% endif %}
+</section>
+<!-- Logout Modal -->
+<div id="logoutModal" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:10000;display:none;align-items:center;justify-content:center">
+    <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px)" onclick="hideLogoutModal()"></div>
+    <div style="position:relative;background:white;border-radius:20px;max-width:420px;width:90%;box-shadow:0 25px 60px rgba(0,0,0,0.3);overflow:hidden">
+        <div style="background:linear-gradient(135deg,#ff6b6b 0%,#ee5a24 100%);color:white;padding:2rem;text-align:center">
+            <i class="fas fa-sign-out-alt" style="font-size:3rem;margin-bottom:1rem;opacity:0.9"></i>
+            <h3 style="margin:0;font-size:1.5rem;font-weight:700">Confirm Logout</h3>
+        </div>
+        <div style="padding:2rem;text-align:center">
+            <p style="margin:0;font-size:1.1rem;color:#555;line-height:1.5">Are you sure you want to log out?</p>
+        </div>
+        <div style="padding:0 2rem 2rem;display:flex;gap:1rem">
+            <button onclick="hideLogoutModal()" style="flex:1;padding:1rem 1.5rem;border:2px solid #e9ecef;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;background:#f8f9fa;color:#6c757d;text-transform:uppercase;letter-spacing:0.5px">No, Stay</button>
+            <button onclick="window.location.href='{% url 'logout' %}'" style="flex:1;padding:1rem 1.5rem;border:2px solid transparent;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;background:linear-gradient(135deg,#ff6b6b 0%,#ee5a24 100%);color:white;text-transform:uppercase;letter-spacing:0.5px">Yes, Logout</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showLogoutModal(){document.getElementById('logoutModal').style.display='flex';document.body.style.overflow='hidden'}
+function hideLogoutModal(){document.getElementById('logoutModal').style.display='none';document.body.style.overflow='auto'}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')hideLogoutModal()})
+
+const box = document.getElementById('searchBox');
+const list = document.getElementById('suggestions');
+if (box) {
+  box.addEventListener('input', async (e) => {
+    const q = box.value.trim();
+    if (!q) { list.innerHTML=''; return; }
+    const res = await fetch(`{% url 'suggest-foods' %}?q=${encodeURIComponent(q)}`);
+    const data = await res.json();
+    list.innerHTML = data.suggestions.map(s => `<li class='suggest-item'>${s}</li>`).join('');
+  });
+  list.addEventListener('click', (e) => {
+    if (e.target.classList.contains('suggest-item')){
+      box.value = e.target.textContent;
+      list.innerHTML='';
+    }
+  });
+}
+// Category filter with active state
+document.querySelectorAll('[data-filter]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const f = btn.getAttribute('data-filter');
+    // Update active button style
+    document.querySelectorAll('[data-filter]').forEach(b=>{
+      b.style.background = 'linear-gradient(135deg,#fff7ed,#ffe5cc)';
+      b.style.color = '#c2410c';
+      b.style.boxShadow = '0 4px 12px rgba(0,0,0,.08)';
+    });
+    btn.style.background = 'linear-gradient(135deg,var(--primary),var(--primary-600))';
+    btn.style.color = '#fff';
+    btn.style.boxShadow = '0 8px 18px rgba(245,71,73,.35)';
+    // Filter cards
+    document.querySelectorAll('.grid.cards .card').forEach(card=>{
+      const c=card.getAttribute('data-category');
+      card.style.display = (f==='all' || c===f)?'block':'none';
+    });
+  });
+});
+</script>
+{% endblock %}
+
